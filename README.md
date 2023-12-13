@@ -1,66 +1,80 @@
-## Foundry
+## Foundry Fund Me
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This is a simple project to demonstrate how to use the Foundry framework to build a simple crowdfunding application.
 
-Foundry consists of:
+Important elements in this project are:
+- the unit and integration tests
+- the use of scripts for deployment as well as managing the funds of the contract
+- the use of keystore based accounts using the --account parameter
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+The Makefile does all the heavy lifting for you. It will install all the dependencies, build the project, run the tests and deploy the contract to the specified network.
+
 
 ## Documentation
-
-https://book.getfoundry.sh/
 
 ## Usage
 
 ### Build
 
 ```shell
-$ forge build
+$ make build
 ```
 
 ### Test
 
 ```shell
-$ forge test
+$ make test
 ```
 
 ### Format
 
 ```shell
-$ forge fmt
+$ make fmt
 ```
 
 ### Gas Snapshots
 
 ```shell
-$ forge snapshot
+$ make snapshot
 ```
 
-### Anvil
+### Deployment
+
+To deploy locally
 
 ```shell
-$ anvil
-```
+$ make deploy
+``` 
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
+To deploy to Sepolia
 
 ```shell
-$ cast <subcommand>
+$ make deploy --network sepolia
 ```
 
-### Help
+### Funding
+
+To fund the contract on a local network
 
 ```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+$ make fund
 ```
+
+To fund the contract on Sepolia
+
+```shell
+$ make fund --network sepolia
+```
+
+To withdraw from the contract on a local network
+
+```shell
+$ make withdraw
+```
+
+To withdraw from the contract on Sepolia
+
+```shell
+$ make withdraw --network sepolia
+```
+
